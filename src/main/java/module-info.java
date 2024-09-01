@@ -9,6 +9,8 @@ module org.tyresemv.smkonnect {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
+    requires scribejava.core;
+    requires scribejava.apis;
 
     opens org.tyresemv.smkonnect to javafx.fxml;
     exports org.tyresemv.smkonnect;
