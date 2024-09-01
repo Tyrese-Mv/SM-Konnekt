@@ -11,6 +11,7 @@ module org.tyresemv.smkonnect {
     requires eu.hansolo.tilesfx;
     requires scribejava.core;
     requires scribejava.apis;
+    requires jdk.jsobject;
 
     opens org.tyresemv.smkonnect to javafx.fxml;
     exports org.tyresemv.smkonnect;
