@@ -12,6 +12,7 @@ module org.tyresemv.smkonnect {
     requires scribejava.core;
     requires scribejava.apis;
     requires jdk.jsobject;
+    requires com.fasterxml.jackson.databind;
 
     opens org.tyresemv.smkonnect to javafx.fxml;
     exports org.tyresemv.smkonnect;

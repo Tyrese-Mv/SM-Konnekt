@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tyresemv.smkonnect.TwitterController">
+   <children>
+      <Label layoutX="237.0" layoutY="27.0" text="TWITTER">
+         <font>
+            <Font name="Segoe UI Semibold" size="31.0" />
+         </font>
+      </Label>
+      <Button layoutX="243.0" layoutY="84.0" mnemonicParsing="false" onAction="#OnConnectClick" text="Connect To twitter" />
+      <TextField layoutX="226.0" layoutY="211.0" fx:id="verification" />
+      <Label layoutX="258.0" layoutY="175.0" text="Verifier Number" />
+      <Button layoutX="296.0" layoutY="135.0" mnemonicParsing="false" text="Redirect" onAction="#OnRedirectLink" />
+      <Label layoutX="236.0" layoutY="263.0" text="Your Twitter Account Info" />
+      <ListView layoutX="204.0" layoutY="286.0" prefHeight="200.0" prefWidth="200.0" fx:id="AccountInfo" />
+      <Button layoutX="391.0" layoutY="211.0" mnemonicParsing="false" text="Verify" onAction="#OnVerification" />
+   </children>
+</AnchorPane>

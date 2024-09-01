@@ -1,5 +1,8 @@
 package org.tyresemv.smkonnect.models;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.scribejava.apis.TwitterApi;
 import com.github.scribejava.core.builder.ServiceBuilder;
 import com.github.scribejava.core.model.*;
@@ -21,8 +24,12 @@ public class TwitterConnect {
     private OAuth1AccessToken accessToken;
 
     public TwitterConnect(){
+    }
+
+    public void setService(){
         this.service = new ServiceBuilder("9fDI7zKT56J7Sw5TxJmqhVQf0")
                 .apiSecret("BZvuPcLqFRzEuD9FTPl3NcEp84XqbYuQFUNFOhe2iQZt2DlZx3")
+                .debug()
                 .build(TwitterApi.instance());
     }
 
@@ -32,7 +39,7 @@ public class TwitterConnect {
 
 
     public String RedirectLink(){
-        return this.service.getAuthorizationUrl(requestToken);
+        return this.service.getAuthorizationUrl(this.requestToken);
     }
 
     public void setVerifier(String verify){
@@ -43,12 +50,15 @@ public class TwitterConnect {
         this.accessToken = this.service.getAccessToken(this.requestToken,this.Verifier);
     }
 
-    public JSObject request(String url){
+    public JsonNode request(String url) throws IOException, ExecutionException, InterruptedException {
+        this.setAccessToken();
         final OAuthRequest request = new OAuthRequest(Verb.GET, url);
         this.service.signRequest(this.accessToken, request);
         try (Response response = this.service.execute(request)) {
+            ObjectMapper objectMapper = new ObjectMapper();
+            return objectMapper.readTree(response.getBody());
 
-            return  JSObject.class.cast(response.getBody()) ;
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (ExecutionException e) {
