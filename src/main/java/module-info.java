@@ -15,5 +15,5 @@ module org.tyresemv.smkonnect {
     requires com.fasterxml.jackson.databind;
 
     opens org.tyresemv.smkonnect to javafx.fxml;
-    exports org.tyresemv.smkonnect;
+    exports org.tyresemv.smkonnect to ALL_UNNAMED;
 }

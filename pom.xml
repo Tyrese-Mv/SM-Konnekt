@@ -52,6 +52,11 @@
             </exclusions>
         </dependency>
         <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>5.13.0</version>
+        </dependency>
+        <dependency>
             <groupId>net.synedra</groupId>
             <artifactId>validatorfx</artifactId>
             <version>0.4.0</version>
@@ -86,13 +91,14 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit.version}</version>
+            <version>5.9.2</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit.version}</version>
+            <version>5.9.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>

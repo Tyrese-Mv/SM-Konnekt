@@ -14,8 +14,8 @@ import java.util.Scanner;
 import java.util.concurrent.ExecutionException;
 
 public class TwitterConnect {
-    private static final String PROTECTED_RESOURCE_URL = "https://api.twitter.com/1.1/account/verify_credentials.json";
-    private OAuth10aService service;
+    public static final String PROTECTED_RESOURCE_URL = "https://api.twitter.com/1.1/account/verify_credentials.json";
+    public OAuth10aService service;
 
     private OAuth1RequestToken requestToken;
 
