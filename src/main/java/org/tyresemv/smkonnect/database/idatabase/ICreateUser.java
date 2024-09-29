@@ -1,2 +1,4 @@
-package org.tyresemv.smkonnect.database.idatabase;public interface ICreateUser {
+package org.tyresemv.smkonnect.database.idatabase;
+
+public interface ICreateUser {
 }
