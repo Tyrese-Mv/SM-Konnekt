@@ -1,4 +1,4 @@
-package org.tyresemv.smkonnect;
+package org.tyresemv.smkonnect.controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import javafx.application.HostServices;
