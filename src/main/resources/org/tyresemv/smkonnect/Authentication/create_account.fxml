@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tyresemv.smkonnect.controllers.AuthenticationController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#caeafc" height="369.0" layoutX="97.0" layoutY="16.0" stroke="BLACK" strokeType="INSIDE" width="407.0" />
+      <Label layoutX="216.0" layoutY="41.0" text="Create Account">
+         <font>
+            <Font name="Malgun Gothic" size="24.0" />
+         </font>
+      </Label>
+      <TextField id="email_1" layoutX="226.0" layoutY="106.0" />
+      <Label layoutX="263.0" layoutY="82.0" text="Email Address" />
+      <TextField id="email_confirm" layoutX="226.0" layoutY="164.0" />
+      <Label layoutX="240.0" layoutY="139.0" text="Confirm Email Address" />
+      <Label layoutX="275.0" layoutY="201.0" text="Password" />
+      <PasswordField id="password_1" layoutX="226.0" layoutY="227.0" />
+      <Label layoutX="252.0" layoutY="262.0" text="Confirm Password" />
+      <PasswordField id="password_confirm" layoutX="226.0" layoutY="285.0" />
+      <Button id="create_account" layoutX="252.0" layoutY="328.0" mnemonicParsing="false" text="Create Account" />
+   </children>
 </AnchorPane>

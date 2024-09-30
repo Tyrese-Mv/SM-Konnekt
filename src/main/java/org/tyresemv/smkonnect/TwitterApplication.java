@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.tyresemv.smkonnect.controllers.TwitterController;
 
 public class TwitterApplication extends Application {
     @Override
