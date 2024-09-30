@@ -1,2 +1,4 @@
-package org.tyresemv.smkonnect.controllers;public class AuthenticationController {
+package org.tyresemv.smkonnect.controllers;
+
+public class AuthenticationController {
 }
