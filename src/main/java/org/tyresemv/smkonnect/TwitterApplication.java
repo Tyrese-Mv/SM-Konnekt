@@ -10,7 +10,7 @@ public class TwitterApplication extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Twitter/TwitterPage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 800);
+        Scene scene = new Scene(fxmlLoader.load());
         TwitterController twitterController = fxmlLoader.getController();
         twitterController.setHostServices(getHostServices());
         stage.setTitle("Twitter!");
