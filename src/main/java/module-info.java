@@ -17,4 +17,6 @@ module org.tyresemv.smkonnect {
 
     opens org.tyresemv.smkonnect to javafx.fxml;
     exports org.tyresemv.smkonnect to ALL_UNNAMED;
+    exports org.tyresemv.smkonnect.controllers to ALL_UNNAMED;
+    opens org.tyresemv.smkonnect.controllers to javafx.fxml;
 }
