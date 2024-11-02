@@ -22,7 +22,7 @@ public class TableCreation implements ITableCreation {
         try(final Statement stmt = this.db.createStatement()) {
             stmt.executeUpdate("""
                     CREATE TABLE IF NOT EXISTS User(
-                        user_id INTEGER PRIMARY KEY AUTO INCREMENT,
+                        user_id TEXT PRIMARY KEY,
                         Name TEXT NOT NULL,
                         Surname TEXT NOT NULL,
                         email_address TEXT NOT NULL,
@@ -39,9 +39,9 @@ public class TableCreation implements ITableCreation {
     public void CreateSessionTable() {
         try(final Statement stmt = this.db.createStatement()) {
             stmt.executeUpdate("""
-                    CREATE TABLE sessions (
+                    CREATE TABLE IF NOT EXISTS sessions (
                           id INTEGER PRIMARY KEY AUTOINCREMENT,
-                          user_id INTEGER NOT NULL,
+                          user_id TEXT NOT NULL,
                           session_token TEXT NOT NULL,
                           expiration_time TIMESTAMP NOT NULL,
                           created_at TIMESTAMP NOT NULL,
@@ -57,11 +57,10 @@ public class TableCreation implements ITableCreation {
     public void CreateCredentialsTable() {
         try(final Statement stmt = this.db.createStatement()) {
             stmt.executeUpdate("""
-                    CREATE TABLE user_credentials (
+                    CREATE TABLE IF NOT EXISTS user_credentials (
                             id INTEGER PRIMARY KEY AUTOINCREMENT,
-                            user_id INTEGER NOT NULL,
+                            user_id TEXT NOT NULL,
                             password_hash TEXT NOT NULL,
-                            password_salt TEXT,
                             created_at TIMESTAMP NOT NULL,
                             expire_at TIMESTAMP NOT NULL,
                             FOREIGN KEY(user_id) REFERENCES users(id)

@@ -1,29 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tyresemv.smkonnect.controllers.AuthenticationController">
+<AnchorPane prefHeight="860.0" prefWidth="1320.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tyresemv.smkonnect.controllers.AuthenticationController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#caeafc" height="369.0" layoutX="97.0" layoutY="16.0" stroke="BLACK" strokeType="INSIDE" width="407.0" />
-      <Label layoutX="216.0" layoutY="41.0" text="Create Account">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#caeafc" height="622.0" layoutX="456.0" layoutY="131.0" stroke="BLACK" strokeType="INSIDE" width="407.0" AnchorPane.bottomAnchor="107.0" AnchorPane.leftAnchor="456.0" AnchorPane.rightAnchor="457.0" AnchorPane.topAnchor="131.0" />
+      <Label layoutX="570.0" layoutY="157.0" text="Create Account">
          <font>
             <Font name="Malgun Gothic" size="24.0" />
          </font>
       </Label>
-      <TextField id="email_1" layoutX="226.0" layoutY="106.0" />
-      <Label layoutX="263.0" layoutY="82.0" text="Email Address" />
-      <TextField id="email_confirm" layoutX="226.0" layoutY="164.0" />
-      <Label layoutX="240.0" layoutY="139.0" text="Confirm Email Address" />
-      <Label layoutX="275.0" layoutY="201.0" text="Password" />
-      <PasswordField id="password_1" layoutX="226.0" layoutY="227.0" />
-      <Label layoutX="252.0" layoutY="262.0" text="Confirm Password" />
-      <PasswordField id="password_confirm" layoutX="226.0" layoutY="285.0" />
-      <Button id="create_account" layoutX="252.0" layoutY="328.0" mnemonicParsing="false" text="Create Account" />
+      <TextField fx:id="email" layoutX="577.0" layoutY="231.0" />
+      <Label layoutX="614.0" layoutY="207.0" text="Email Address" />
+      <TextField fx:id="email_confirm" layoutX="578.0" layoutY="292.0" />
+      <Label layoutX="592.0" layoutY="267.0" text="Confirm Email Address" />
+      <Label layoutX="632.0" layoutY="517.0" text="Password" />
+      <PasswordField fx:id="password" layoutX="583.0" layoutY="543.0" />
+      <Label layoutX="604.0" layoutY="598.0" text="Confirm Password" />
+      <PasswordField fx:id="password_confirm" layoutX="578.0" layoutY="621.0" />
+      <Button fx:id="create_account" layoutX="602.0" layoutY="660.0" mnemonicParsing="false" text="Create Account" />
+      <TextField fx:id="name" layoutX="578.0" layoutY="359.0" />
+      <Label layoutX="640.0" layoutY="334.0" text="Name" />
+      <TextField fx:id="surname" layoutX="583.0" layoutY="418.0" />
+      <Label layoutX="631.0" layoutY="394.0" text="Surname" />
+      <TextField fx:id="cell_number" layoutX="581.0" layoutY="477.0" />
+      <Label layoutX="609.0" layoutY="454.0" text="Cellphone number" />
    </children>
 </AnchorPane>
