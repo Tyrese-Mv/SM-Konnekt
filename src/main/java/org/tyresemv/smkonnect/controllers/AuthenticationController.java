@@ -34,7 +34,7 @@ public class AuthenticationController {
     private Parent root;
 
     @FXML
-    private Button login, create_account;
+    private Button login, create_account, to_create_account;
 
     @FXML
     private TextField login_email, email, email_confirm;
@@ -46,9 +46,8 @@ public class AuthenticationController {
     }
 
     public void login(ActionEvent event) throws IOException {
-        if(login_email.getText().equalsIgnoreCase("123")
-                && login_password.getText().equalsIgnoreCase("123")){
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/org/tyresemv/smkonnect/Twitter/TwitterPage.fxml")));
+        if(dbOperation.isPasswordValid(login_email.getText(), login_password.getText())){
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/org/tyresemv/smkonnect/Twitter/TwitterPage.fxml")));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
@@ -67,7 +66,7 @@ public class AuthenticationController {
     }
 
     public void toCreateAccount(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("org/tyresemv/smkonnect/Authentication/create_account.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/org/tyresemv/smkonnect/Authentication/create_account.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -77,17 +76,19 @@ public class AuthenticationController {
     public void create_account(ActionEvent event) throws IOException {
         boolean account_created = dbOperation.CreateAccount(new User("123", name.getText(), surname.getText(), email.getText(), cell_number.getText(), false));
         if (account_created){
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("org/tyresemv/smkonnect/Authentication/login.fxml")));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/org/tyresemv/smkonnect/Authentication/login.fxml")));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-        } else{
+        } else {
             name.clear();
             surname.clear();
             email.clear();
             email_confirm.clear();
             cell_number.clear();
+            create_password.clear();
+            create_password_confirm.clear();
             validation.setText("Account already created, try again!!");
         }
 

@@ -21,12 +21,13 @@
       <PasswordField fx:id="password" layoutX="583.0" layoutY="543.0" />
       <Label layoutX="604.0" layoutY="598.0" text="Confirm Password" />
       <PasswordField fx:id="password_confirm" layoutX="578.0" layoutY="621.0" />
-      <Button fx:id="create_account" layoutX="602.0" layoutY="660.0" mnemonicParsing="false" text="Create Account" />
+      <Button fx:id="create_account" layoutX="602.0" layoutY="660.0" mnemonicParsing="false" onAction="#create_account" text="Create Account" />
       <TextField fx:id="name" layoutX="578.0" layoutY="359.0" />
       <Label layoutX="640.0" layoutY="334.0" text="Name" />
       <TextField fx:id="surname" layoutX="583.0" layoutY="418.0" />
       <Label layoutX="631.0" layoutY="394.0" text="Surname" />
       <TextField fx:id="cell_number" layoutX="581.0" layoutY="477.0" />
       <Label layoutX="609.0" layoutY="454.0" text="Cellphone number" />
+      <Label fx:id="validation" layoutX="535.0" layoutY="694.0" prefHeight="17.0" prefWidth="269.0" />
    </children>
 </AnchorPane>

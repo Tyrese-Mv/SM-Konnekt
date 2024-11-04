@@ -19,7 +19,7 @@ public class DbOperation {
     public boolean isPasswordValid(String Password, String Username){
         try{
             PreparedStatement login = this.db.prepareStatement("SELECT password_hash FROM user_credentials WHERE user_id = ?;");
-            login.setString(0, Username);
+            login.setString(1, Username);
             ResultSet result = login.executeQuery();
             while(result.next()){
                 if (result.getString("password_hash").equals(Password)){
