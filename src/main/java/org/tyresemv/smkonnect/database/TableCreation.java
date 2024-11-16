@@ -15,6 +15,7 @@ public class TableCreation implements ITableCreation {
         CreateUserTable();
         CreateCredentialsTable();
         CreateSessionTable();
+        CreateSocialMediaTokensTable();
     }
 
     @Override
@@ -64,6 +65,25 @@ public class TableCreation implements ITableCreation {
                             created_at TIMESTAMP NOT NULL,
                             expire_at TIMESTAMP NOT NULL,
                             FOREIGN KEY(user_id) REFERENCES users(id)
+                        );
+                    """);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void CreateSocialMediaTokensTable() {
+        try (final Statement stmt = this.db.createStatement()) {
+            stmt.executeUpdate("""
+                    CREATE TABLE IF NOT EXISTS social_media_tokens (
+                            id INTEGER PRIMARY KEY AUTOINCREMENT,
+                            user_id TEXT NOT NULL,
+                            platform TEXT NOT NULL,
+                            access_token TEXT NOT NULL,
+                            refresh_token TEXT,
+                            token_expiry TIMESTAMP,
+                            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                            FOREIGN KEY (user_id) REFERENCES User(user_id)
                         );
                     """);
         } catch (SQLException e) {

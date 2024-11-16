@@ -11,9 +11,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.mindrot.jbcrypt.BCrypt;
 import org.tyresemv.smkonnect.TwitterApplication;
 import org.tyresemv.smkonnect.database.DbOperation;
 import org.tyresemv.smkonnect.models.User;
+import java.util.UUID;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -46,7 +48,7 @@ public class AuthenticationController {
     }
 
     public void login(ActionEvent event) throws IOException {
-        if(dbOperation.isPasswordValid(login_email.getText(), login_password.getText())){
+        if(dbOperation.isPasswordValid(login_password.getText(), login_email.getText())){
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/org/tyresemv/smkonnect/Twitter/TwitterPage.fxml")));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
@@ -57,11 +59,6 @@ public class AuthenticationController {
             login_password.clear();
             validation.setText("Wrong password try again!!");
         }
-//        } catch (RuntimeException e){
-//            login_email.clear();
-//            login_password.clear();
-//            validation.setText("Wrong password try again!!");
-//        }
 
     }
 
@@ -74,7 +71,18 @@ public class AuthenticationController {
     }
 
     public void create_account(ActionEvent event) throws IOException {
-        boolean account_created = dbOperation.CreateAccount(new User("123", name.getText(), surname.getText(), email.getText(), cell_number.getText(), false));
+        String hashedPassword = BCrypt.hashpw(create_password.getText(), BCrypt.gensalt());
+        boolean account_created = dbOperation.CreateAccount(
+                new User(
+                        UUID.randomUUID().toString(),
+                        name.getText(),
+                        surname.getText(),
+                        email.getText(),
+                        cell_number.getText(),
+                        false
+                ),
+                hashedPassword
+        );
         if (account_created){
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/org/tyresemv/smkonnect/Authentication/login.fxml")));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();

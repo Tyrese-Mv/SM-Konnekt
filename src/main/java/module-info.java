@@ -14,6 +14,7 @@ module org.tyresemv.smkonnect {
     requires jdk.jsobject;
     requires com.fasterxml.jackson.databind;
     requires java.sql;
+    requires jbcrypt;
 
     opens org.tyresemv.smkonnect to javafx.fxml;
     exports org.tyresemv.smkonnect to javafx.graphics;

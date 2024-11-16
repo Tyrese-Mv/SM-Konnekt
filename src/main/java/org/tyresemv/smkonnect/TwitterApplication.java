@@ -12,7 +12,7 @@ public class TwitterApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Twitter/TwitterPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         TwitterController twitterController = fxmlLoader.getController();
-        twitterController.setHostServices(getHostServices());
+//        twitterController.setHostServices(getHostServices());
         stage.setTitle("Twitter!");
         stage.setScene(scene);
         stage.show();

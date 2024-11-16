@@ -6,4 +6,5 @@ public interface ITableCreation {
     void CreateSessionTable();
 
     void CreateCredentialsTable();
+    void CreateSocialMediaTokensTable();
 }
