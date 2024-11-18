@@ -48,8 +48,9 @@ public class AuthenticationController {
     }
 
     public void login(ActionEvent event) throws IOException {
-        if(dbOperation.isPasswordValid(login_password.getText(), login_email.getText())){
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/org/tyresemv/smkonnect/Twitter/TwitterPage.fxml")));
+        // made not true for testing purposes
+        if(!dbOperation.isPasswordValid(login_password.getText(), login_email.getText())){
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/org/tyresemv/smkonnect/Dashboard/dashboard.fxml")));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);

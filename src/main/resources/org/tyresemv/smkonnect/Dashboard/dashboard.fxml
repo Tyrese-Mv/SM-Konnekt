@@ -1,6 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
 
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.tyresemv.smkonnect.controllers.DashboardController"
+            stylesheets="@styles/DashboardStyle.css">
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" />
+    <!-- Sidebar -->
+    <left>
+        <VBox spacing="20" alignment="TOP_CENTER" styleClass="sidebar">
+            <Label text="SMKonnect" styleClass="sidebar-title"/>
+            <Button text="Home" styleClass="sidebar-button" onAction="#navigateHome"/>
+            <Button text="Social Media Accounts" styleClass="sidebar-button" onAction="#navigateSocialAccounts"/>
+            <Button text="Create Post" styleClass="sidebar-button" onAction="#navigateCreatePost"/>
+            <Button text="Notifications" styleClass="sidebar-button" onAction="#navigateNotifications"/>
+            <Button text="Settings" styleClass="sidebar-button" onAction="#navigateSettings"/>
+            <Button text="Logout" styleClass="sidebar-button" onAction="#logout"/>
+        </VBox>
+    </left>
+
+    <!-- Overview Panel -->
+    <center>
+        <VBox spacing="20" alignment="CENTER" styleClass="overview-panel">
+            <Label text="Welcome to Your Dashboard" styleClass="overview-title"/>
+            <HBox spacing="15" alignment="CENTER" styleClass="overview-boxes">
+                <VBox spacing="10" alignment="CENTER" styleClass="overview-box">
+                    <Label text="Followers" styleClass="overview-label"/>
+                    <Label text="Placeholder" styleClass="overview-value"/>
+                </VBox>
+                <VBox spacing="10" alignment="CENTER" styleClass="overview-box">
+                    <Label text="Scheduled Posts" styleClass="overview-label"/>
+                    <Label text="Placeholder" styleClass="overview-value"/>
+                </VBox>
+                <VBox spacing="10" alignment="CENTER" styleClass="overview-box">
+                    <Label text="Notifications" styleClass="overview-label"/>
+                    <Label text="Placeholder" styleClass="overview-value"/>
+                </VBox>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

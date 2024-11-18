@@ -1,0 +1,48 @@
+/* General Styling */
+.page-header {
+    -fx-padding: 20;
+    -fx-background-color: #2c3e50;
+    -fx-text-alignment: center;
+}
+
+.header-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ecf0f1;
+}
+
+.header-subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: #bdc3c7;
+}
+
+.content-area {
+    -fx-padding: 20;
+}
+
+.accounts-list {
+    -fx-pref-height: 300;
+    -fx-background-color: #f4f4f9;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 5;
+}
+
+.primary-button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-padding: 10 15;
+    -fx-border-radius: 5;
+    -fx-cursor: hand;
+}
+
+.danger-button {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+    -fx-padding: 10 15;
+    -fx-border-radius: 5;
+    -fx-cursor: hand;
+}
+
+.primary-button:hover, .danger-button:hover {
+    -fx-opacity: 0.9;
+}

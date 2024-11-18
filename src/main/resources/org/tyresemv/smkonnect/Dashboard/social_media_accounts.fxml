@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.tyresemv.smkonnect.controllers.SocialMediaAccountsController"
+            stylesheets="@styles/socia_media_accounts_style.css">
+
+    <!-- Title -->
+    <top>
+        <VBox alignment="CENTER" spacing="10" styleClass="page-header">
+            <Label text="Social Media Accounts" styleClass="header-title"/>
+            <Label text="Manage your connected accounts below." styleClass="header-subtitle"/>
+        </VBox>
+    </top>
+
+    <!-- Account List and Actions -->
+    <center>
+        <VBox spacing="20" alignment="CENTER" styleClass="content-area">
+            <ListView fx:id="accountsListView" styleClass="accounts-list"/>
+            <HBox spacing="15" alignment="CENTER">
+                <Button text="Add Account" styleClass="primary-button" onAction="#addAccount"/>
+                <Button text="Remove Account" styleClass="danger-button" onAction="#removeAccount"/>
+                <Button text="Refresh" styleClass="primary-button" onAction="#refreshAccounts"/>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>
