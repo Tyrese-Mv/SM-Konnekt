@@ -75,16 +75,16 @@ public class TableCreation implements ITableCreation {
         try (final Statement stmt = this.db.createStatement()) {
             stmt.executeUpdate("""
                     CREATE TABLE IF NOT EXISTS social_media_tokens (
-                            id INTEGER PRIMARY KEY AUTOINCREMENT,
-                            user_id TEXT NOT NULL,
-                            platform TEXT NOT NULL,
-                            access_token TEXT NOT NULL,
-                            refresh_token TEXT,
-                            token_expiry TIMESTAMP,
-                            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                            FOREIGN KEY (user_id) REFERENCES User(user_id)
-                        );
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        user_id TEXT NOT NULL,
+                        platform TEXT NOT NULL,
+                        access_token TEXT NOT NULL,
+                        refresh_token TEXT NOT NULL,
+                        token_expiry TIMESTAMP,
+                        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                        UNIQUE(user_id, platform)
+                    );
+                    
                     """);
         } catch (SQLException e) {
             throw new RuntimeException(e);

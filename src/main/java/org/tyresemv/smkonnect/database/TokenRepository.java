@@ -14,14 +14,14 @@ public class TokenRepository {
 
     public void saveToken(String userId, String platform, String accessToken, String refreshToken, Timestamp expiry) {
         String query = """
-            INSERT INTO social_media_tokens (user_id, platform, access_token, refresh_token, token_expiry)
-            VALUES (?, ?, ?, ?, ?)
-            ON CONFLICT(user_id, platform) DO UPDATE
-            SET access_token = excluded.access_token,
-                refresh_token = excluded.refresh_token,
-                token_expiry = excluded.token_expiry,
-                updated_at = CURRENT_TIMESTAMP;
-        """;
+        INSERT INTO social_media_tokens (user_id, platform, access_token, refresh_token, token_expiry)
+        VALUES (?, ?, ?, ?, ?)
+        ON CONFLICT(user_id, platform) DO UPDATE
+        SET access_token = excluded.access_token,
+            refresh_token = excluded.refresh_token,
+            token_expiry = excluded.token_expiry,
+            updated_at = CURRENT_TIMESTAMP;
+    """;
         try (PreparedStatement stmt = db.prepareStatement(query)) {
             stmt.setString(1, userId);
             stmt.setString(2, platform);
