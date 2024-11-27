@@ -11,7 +11,7 @@ public interface SocialMediaIntegration {
     String getAuthorizationUrl();
     void setAccessToken(String verifier) throws IOException, ExecutionException, InterruptedException;
     JsonNode fetchResource(String url) throws IOException, ExecutionException, InterruptedException;
-    void postUpdate(String content) throws IOException, ExecutionException, InterruptedException;
+    boolean postUpdate(String content) throws IOException, ExecutionException, InterruptedException;
     void schedulePost(String content, String time);
     String getAccessToken();
 

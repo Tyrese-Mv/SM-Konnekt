@@ -31,7 +31,7 @@ public class DashboardController {
 
     @FXML
     public void navigateCreatePost(ActionEvent event) throws IOException {
-        navigateTo(event, "/org/tyresemv/smkonnect/CreatePostPage.fxml");
+        navigateTo(event, "/org/tyresemv/smkonnect/Dashboard/create_post.fxml");
     }
 
     @FXML

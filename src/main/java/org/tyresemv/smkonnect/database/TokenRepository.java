@@ -6,10 +6,28 @@ import java.sql.*;
 import java.util.Optional;
 
 public class TokenRepository {
-    private final Connection db;
+    private static TokenRepository instance;
+    private static Connection db;
 
-    public TokenRepository() throws SQLException {
-        this.db = DbConnect.getInstance().getDbConnection();
+    // Private constructor to prevent instantiation
+    private TokenRepository() throws SQLException {
+        db = DbConnect.getInstance().getDbConnection();
+    }
+
+    // Public method to provide access to the single instance
+    public static synchronized TokenRepository getInstance() {
+        if (instance == null) {
+            try {
+                instance = new TokenRepository();
+            } catch (SQLException e) {
+                throw new RuntimeException("Error initializing TokenRepository: " + e.getMessage(), e);
+            }
+        }
+        return instance;
+    }
+
+    public static Connection getTokenDb() {
+        return db;
     }
 
     public void saveToken(String userId, String platform, String accessToken, String refreshToken, Timestamp expiry) {
@@ -21,7 +39,7 @@ public class TokenRepository {
             refresh_token = excluded.refresh_token,
             token_expiry = excluded.token_expiry,
             updated_at = CURRENT_TIMESTAMP;
-    """;
+        """;
         try (PreparedStatement stmt = db.prepareStatement(query)) {
             stmt.setString(1, userId);
             stmt.setString(2, platform);

@@ -5,10 +5,16 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.tyresemv.smkonnect.AuthenticationApplication;
+import org.tyresemv.smkonnect.database.DbConnect;
+import org.tyresemv.smkonnect.database.DbOperation;
 import org.tyresemv.smkonnect.database.TokenRepository;
 import org.tyresemv.smkonnect.models.SocialMediaFactory;
 import org.tyresemv.smkonnect.models.SocialMediaIntegration;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,14 +26,18 @@ public class SocialMediaAccountsController {
     private ObservableList<String> accounts;
 
     @FXML
-    public void initialize() {
-        // Load accounts from the database
-        accounts = FXCollections.observableArrayList(
-                "Twitter (Active)",
-                "Instagram (Needs Re-authentication)",
-                "Facebook (Active)"
-        );
-        accountsListView.setItems(accounts);
+    public void initialize() throws SQLException {
+
+        ArrayList<String> dbAccounts = DbOperation.initAccounts();
+
+        if (dbAccounts == null){
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Failed to load accounts: ");
+            alert.setHeaderText("Database Error");
+            alert.show();
+        } else {
+            accounts = FXCollections.observableArrayList(dbAccounts);
+            accountsListView.setItems(accounts);
+        }
     }
 
     @FXML
@@ -60,7 +70,7 @@ public class SocialMediaAccountsController {
                         integration.setAccessToken(verifier);
 
                         // Save tokens in the database
-                        TokenRepository tokenRepo = new TokenRepository();
+                        TokenRepository tokenRepo = TokenRepository.getInstance();
                         tokenRepo.saveToken(
                                 "user123",
                                 platform,

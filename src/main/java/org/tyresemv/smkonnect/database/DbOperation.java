@@ -3,19 +3,22 @@ package org.tyresemv.smkonnect.database;
 import org.mindrot.jbcrypt.BCrypt;
 import org.tyresemv.smkonnect.models.User;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 
 public class DbOperation {
 
-    private Connection db;
+    private static Connection db;
 
     public DbOperation() throws SQLException {
         new TableCreation();
-        this.db = DbConnect.getInstance().getDbConnection();
+        db = DbConnect.getInstance().getDbConnection();
     }
+
+    public static Connection getDbConnection(){
+        return db;
+    }
+
 
     public boolean isPasswordValid(String password, String username) {
         try {
@@ -60,7 +63,40 @@ public class DbOperation {
         }
     }
 
+    public static ArrayList<String> initAccounts(){
+        ArrayList<String> accounts = new ArrayList<>();// Initialize the ObservableList
 
+        try {
+            // Fetch accounts from the database
+            String query = "SELECT platform, token_expiry FROM social_media_tokens";
+            try (PreparedStatement stmt = db.prepareStatement(query);
+                 ResultSet rs = stmt.executeQuery()) {
+
+                while (rs.next()) {
+                    String platform = rs.getString("platform");
+                    Timestamp tokenExpiry = rs.getTimestamp("token_expiry");
+
+                    // Determine the status of the account
+                    String status;
+                    if (tokenExpiry == null || tokenExpiry.before(new Timestamp(System.currentTimeMillis()))) {
+                        status = "Needs Re-authentication";
+                    } else {
+                        status = "Active";
+                    }
+
+                    // Add the account with its status to the list
+                    accounts.add(platform + " (" + status + ")");
+                }
+                return accounts;
+            }
+        } catch (SQLException e) {
+            // Handle database errors
+//            Alert alert = new Alert(Alert.AlertType.ERROR, "Failed to load accounts: " + e.getMessage());
+//            alert.setHeaderText("Database Error");
+//            alert.show();
+            return null;
+        }
+    }
 
 
 }
