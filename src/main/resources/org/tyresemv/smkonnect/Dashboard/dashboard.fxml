@@ -22,24 +22,27 @@
         </VBox>
     </left>
 
-    <!-- Overview Panel -->
+    <!-- Content Area -->
     <center>
-        <VBox spacing="20" alignment="CENTER" styleClass="overview-panel">
-            <Label text="Welcome to Your Dashboard" styleClass="overview-title"/>
-            <HBox spacing="15" alignment="CENTER" styleClass="overview-boxes">
-                <VBox spacing="10" alignment="CENTER" styleClass="overview-box">
-                    <Label text="Followers" styleClass="overview-label"/>
-                    <Label text="Placeholder" styleClass="overview-value"/>
-                </VBox>
-                <VBox spacing="10" alignment="CENTER" styleClass="overview-box">
-                    <Label text="Scheduled Posts" styleClass="overview-label"/>
-                    <Label text="Placeholder" styleClass="overview-value"/>
-                </VBox>
-                <VBox spacing="10" alignment="CENTER" styleClass="overview-box">
-                    <Label text="Notifications" styleClass="overview-label"/>
-                    <Label text="Placeholder" styleClass="overview-value"/>
-                </VBox>
-            </HBox>
-        </VBox>
+        <StackPane fx:id="contentArea" styleClass="content-area">
+            <!-- Default content -->
+            <VBox spacing="20" alignment="CENTER" styleClass="overview-panel">
+                <Label text="Welcome to Your Dashboard" styleClass="overview-title"/>
+                <HBox spacing="15" alignment="CENTER" styleClass="overview-boxes">
+                    <VBox spacing="10" alignment="CENTER" styleClass="overview-box">
+                        <Label text="Followers" styleClass="overview-label"/>
+                        <Label text="Placeholder" styleClass="overview-value"/>
+                    </VBox>
+                    <VBox spacing="10" alignment="CENTER" styleClass="overview-box">
+                        <Label text="Scheduled Posts" styleClass="overview-label"/>
+                        <Label text="Placeholder" styleClass="overview-value"/>
+                    </VBox>
+                    <VBox spacing="10" alignment="CENTER" styleClass="overview-box">
+                        <Label text="Notifications" styleClass="overview-label"/>
+                        <Label text="Placeholder" styleClass="overview-value"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+        </StackPane>
     </center>
 </BorderPane>

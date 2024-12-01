@@ -20,11 +20,21 @@
     <!-- Account List and Actions -->
     <center>
         <VBox spacing="20" alignment="CENTER" styleClass="content-area">
-            <ListView fx:id="accountsListView" styleClass="accounts-list"/>
+            <ListView fx:id="accountsListView" styleClass="accounts-list">
+                <placeholder>
+                    <Label text="No accounts added yet. Use 'Add Account' to get started."/>
+                </placeholder>
+            </ListView>
             <HBox spacing="15" alignment="CENTER">
-                <Button text="Add Account" styleClass="primary-button" onAction="#addAccount"/>
-                <Button text="Remove Account" styleClass="danger-button" onAction="#removeAccount"/>
-                <Button text="Refresh" styleClass="primary-button" onAction="#refreshAccounts"/>
+                <Button text="Add Account" styleClass="primary-button" onAction="#addAccount">
+
+                </Button>
+                <Button text="Remove Account" styleClass="danger-button" onAction="#removeAccount">
+<!--                    <tooltip text="Remove the selected account"/>-->
+                </Button>
+                <Button text="Refresh" styleClass="primary-button" onAction="#refreshAccounts">
+<!--                    <tooltip text="Refresh the account list"/>-->
+                </Button>
             </HBox>
         </VBox>
     </center>

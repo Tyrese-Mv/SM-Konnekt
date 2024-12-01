@@ -1,0 +1,28 @@
+.content-area {
+    padding: 20px;
+}
+
+.page-header {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.header-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.placeholder-widget {
+    background-color: #e0e0e0;
+    border: 2px dashed #bbb; /* Corrected border syntax */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.placeholder-text {
+    font-size: 16px;
+    color: #777;
+}

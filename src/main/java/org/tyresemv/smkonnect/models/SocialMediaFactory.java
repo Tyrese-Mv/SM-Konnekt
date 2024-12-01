@@ -50,7 +50,7 @@ public class SocialMediaFactory {
     private static SocialMediaIntegration createInstanceForPlatform(String platform, String accessToken, String refreshToken, Timestamp expiry) throws IOException, ExecutionException, InterruptedException {
         switch (platform.toLowerCase()) {
             case "twitter":
-                TwitterConnect twitter = new TwitterConnect("API_KEY", "API_SECRET");
+                TwitterConnect twitter = new TwitterConnect("9fDI7zKT56J7Sw5TxJmqhVQf0", "BZvuPcLqFRzEuD9FTPl3NcEp84XqbYuQFUNFOhe2iQZt2DlZx3");
                 twitter.setAccessToken(accessToken);
                 return twitter;
 

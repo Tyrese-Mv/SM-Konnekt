@@ -4,56 +4,66 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
 
 public class DashboardController {
-    private Stage stage;
-    private Scene scene;
-
-    Label iconLabel = new Label("\uf015"); // Home icon
-
 
     @FXML
-    public void navigateHome(ActionEvent event) {
-        System.out.println("Navigating to Home (Already on Dashboard)");
-        iconLabel.setStyle("-fx-font-family: 'FontAwesome'; -fx-font-size: 20px;");
+    private StackPane contentArea;
+
+    @FXML
+    private void navigateHome() {
+        loadView("/org/tyresemv/smkonnect/Dashboard/home.fxml");
     }
 
     @FXML
-    public void navigateSocialAccounts(ActionEvent event) throws IOException {
-        navigateTo(event, "/org/tyresemv/smkonnect/Dashboard/social_media_accounts.fxml");
+    private void navigateSocialAccounts() {
+        loadView("/org/tyresemv/smkonnect/Dashboard/social_media_accounts.fxml");
     }
 
     @FXML
-    public void navigateCreatePost(ActionEvent event) throws IOException {
-        navigateTo(event, "/org/tyresemv/smkonnect/Dashboard/create_post.fxml");
+    private void navigateCreatePost() {
+        loadView("/org/tyresemv/smkonnect/Dashboard/create_post.fxml");
     }
 
     @FXML
-    public void navigateNotifications(ActionEvent event) throws IOException {
-        navigateTo(event, "/org/tyresemv/smkonnect/NotificationsPage.fxml");
+    private void navigateNotifications() {
+        loadView("/org/tyresemv/smkonnect/views/notifications.fxml");
     }
 
     @FXML
-    public void navigateSettings(ActionEvent event) throws IOException {
-        navigateTo(event, "/org/tyresemv/smkonnect/SettingsPage.fxml");
+    private void navigateSettings() {
+        loadView("/org/tyresemv/smkonnect/views/settings.fxml");
     }
 
     @FXML
-    public void logout(ActionEvent event) throws IOException {
-        navigateTo(event, "/org/tyresemv/smkonnect/Authentication/login.fxml");
+    private void logout() {
+        // Handle logout logic
+        Alert logoutAlert = new Alert(Alert.AlertType.INFORMATION, "You have been logged out.");
+        logoutAlert.show();
+        System.exit(0);
     }
 
-    private void navigateTo(ActionEvent event, String resourcePath) throws IOException {
-        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(resourcePath)));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(loader.load());
-        stage.setScene(scene);
-        stage.show();
+    private void loadView(String fxmlPath) {
+        try {
+            Parent newView = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlPath)));
+            contentArea.getChildren().setAll(newView);
+        } catch (IOException e) {
+            showError("Failed to load view: " + e.getMessage());
+        }
+    }
+
+    private void showError(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR, message);
+        alert.setHeaderText("Error");
+        alert.show();
     }
 }

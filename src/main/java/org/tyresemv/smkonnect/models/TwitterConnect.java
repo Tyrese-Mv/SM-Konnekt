@@ -61,11 +61,14 @@ public class TwitterConnect implements SocialMediaIntegration {
 
     @Override
     public boolean postUpdate(String content) throws IOException, ExecutionException, InterruptedException {
-        OAuthRequest request = new OAuthRequest(Verb.POST, "https://api.twitter.com/1.1/statuses/update.json");
-        request.addParameter("status", content);
+        OAuthRequest request = new OAuthRequest(Verb.POST, "https://api.twitter.com/2/tweets");
+        request.addHeader("Content-Type", "application/json");
+        String jsonBody = "{\"text\": \"" + content + "\"}";
+        request.setPayload(jsonBody);
         service.signRequest(accessToken, request);
-        service.execute(request);
-        return true;
+        Response response = service.execute(request);
+        System.out.println(response.getBody());
+        return response.isSuccessful();
     }
 
     @Override

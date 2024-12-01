@@ -6,29 +6,36 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.tyresemv.smkonnect.controllers.CreatePostController"
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.tyresemv.smkonnect.controllers.CreatePostController"
       alignment="TOP_CENTER" spacing="20" styleClass="content-area">
 
     <!-- Page Header -->
     <HBox alignment="CENTER" spacing="10" styleClass="page-header">
-        <Label text="Create a New Post" styleClass="header-title" />
+        <Label text="Create a New Post" styleClass="header-title"/>
     </HBox>
 
     <!-- Main Content -->
     <VBox spacing="15" alignment="CENTER" styleClass="content-area">
         <!-- Post Text Area -->
-        <TextArea fx:id="postTextArea" promptText="What's on your mind?" styleClass="accounts-list" />
+        <TextArea fx:id="postTextArea" promptText="What's on your mind?" wrapText="true" styleClass="text-area"/>
 
         <!-- Accounts Selection -->
-        <ComboBox fx:id="accountsComboBox" promptText="Select Social Media Account" styleClass="accounts-list" />
+        <ComboBox fx:id="accountsComboBox" promptText="Select Social Media Account" styleClass="dropdown"/>
 
         <!-- Action Buttons -->
-        <HBox spacing="10" alignment="CENTER">
-            <Button text="Post Now" onAction="#postNow" styleClass="primary-button" />
-            <Button text="Schedule Post" onAction="#schedulePost" styleClass="danger-button" />
+        <HBox spacing="15" alignment="CENTER">
+            <Button text="Post Now" onAction="#postNow" styleClass="primary-button">
+<!--                <tooltip text="Publish the post immediately"/>-->
+            </Button>
+            <Button text="Schedule Post" onAction="#schedulePost" styleClass="secondary-button">
+<!--                <tooltip text="Schedule the post for later"/>-->
+            </Button>
         </HBox>
 
         <!-- Error Label -->
-        <Label fx:id="errorLabel" textFill="red" visible="false" />
+        <Label fx:id="errorLabel" textFill="red" visible="false" styleClass="error-label"/>
     </VBox>
 </VBox>
+

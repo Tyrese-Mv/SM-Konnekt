@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.tyresemv.smkonnect.controllers.HomeController"
+      alignment="TOP_CENTER" spacing="20" styleClass="content-area"
+      stylesheets="@styles/home.css">
+
+    <!-- Page Header -->
+    <HBox alignment="CENTER" spacing="10" styleClass="page-header">
+        <Label styleClass="header-title">
+            <text>Home</text>
+        </Label>
+    </HBox>
+
+    <!-- Widgets Section -->
+    <VBox spacing="15" styleClass="content-area">
+
+
+        <!-- Placeholder Widget 1 -->
+        <Pane prefWidth="300" prefHeight="150" styleClass="placeholder-widget">
+            <Label styleClass="placeholder-text">
+                <text>Widget 1 (e.g., Recent Activity)</text>
+            </Label>
+        </Pane>
+
+        <!-- Placeholder Widget 2 -->
+        <Pane prefWidth="300" prefHeight="150" styleClass="placeholder-widget">
+            <Label styleClass="placeholder-text">
+                <text>Widget 2 (e.g., Quick Stats)</text>
+            </Label>
+        </Pane>
+
+        <!-- Placeholder Widget 3 -->
+        <Pane prefWidth="300" prefHeight="150" styleClass="placeholder-widget">
+            <Label styleClass="placeholder-text">
+                <text>Widget 3 (e.g., Notifications)</text>
+            </Label>
+        </Pane>
+    </VBox>
+</VBox>
